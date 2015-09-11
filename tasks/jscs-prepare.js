@@ -1,7 +1,7 @@
 "use strict";
 
 var _ = require('lodash');
-var child_process = require('child_process');
+var runsync = require('runsync');
 var options = null;
 
 function createCallback(patternsList, target) {
@@ -89,7 +89,7 @@ function getGitFileNames(options) {
     var output;
     var filenames = [];
 
-    output = child_process.execSync(options.command).toString();
+    output = runsync.exec(options.command).toString();
 
     if (output.length > 0) {
 
